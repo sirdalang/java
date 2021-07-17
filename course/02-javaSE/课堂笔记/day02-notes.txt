@@ -1,0 +1,111 @@
+day02
+
+1、打开DOS命令窗口，执行java HelloWorld，执行原理？
+    * java命令启动JVM
+    * JVM启动后会启动类加载器ClassLoader
+    * ClassLoader会在硬盘上的某个未知搜索HelloWorld.class字节码文件
+    * 找到该文件则执行
+    * 找不到该文件则报错
+
+    疑问：ClassLoader是在哪个位置上搜索HelloWorld.class字节码文件的？
+        * 默认情况下，ClassLoader从当前路径下加载xxx.class字节码文件
+        * 当然，也可以让ClassLoader去某个指定的路径下加载字节码文件，这时需要配置环境变量classpath
+        * classpath环境变量属于java语言中的环境变量，不属于windows操作系统
+        * classpath是给ClassLoader类加载器指路的。
+        * 设置这样的环境变量：classpath=...
+            - 打开DOS命令窗口在任意位置，都可以执行：java HelloWorld
+        * classpath环境变量如果没有配置的话，类加载器默认从当前路径下找字节码文件，
+        当classpath环境变量配置为某个指定的路径之后，类加载器只去指定路径当中加载字节码文件。
+        * 综上所述，环境变量classpath不再配置，这样类加载器会自动从当前路径下加载class字节码文件。
+        所以，每一次执行.class程序的时候，需要在DOS窗口中先切换到.class字节码文件所在的路径下，然后
+        运行。
+        * classpath=.
+
+        注意：
+            路径中“..”代表上级目录
+            路径中“.”代表当前目录
+
+2、关于java源程序当中的注释：
+
+    * 什么是注释？注释的作用是什么？
+        - 出现在java的源程序当中，对java源代码的解释说明
+        - 注释不会被编译到.class字节码文件当中
+        - 一个好的开发习惯应该是多编写注释，这样程序的可读性增强。
+    
+    * java的注释怎么写？
+        - 单行注释
+            //单行注释，只注释当前行
+        - 多行注释
+            /*
+                多行注释
+                多行注释
+                多行注释
+            */
+
+        - javadoc注释
+            /**
+            * javadoc注释
+            * javadoc注释
+            * javadoc注释
+            */
+            注意：这种注释是比较专业的注释，该注释信息会被javadoc命令程序提取
+            并生成帮助文档
+
+3、对HelloWorld程序进行解释：
+    需要记忆：
+        * public
+        * class
+        * static
+        * void
+        * System.out.println(""); 向控制台输出消息
+        * 类体
+        * 方法体
+        * 类体中不能直接编写java语句【除声明变量之外】
+        * 一个java语句必须以“;”结束
+        * 方法体中可以编写多条java语句
+        * 主方法是程序的入口，固定写法，SUN规定的
+
+4、public class 和  class 的区别：
+
+    * 一个java源文件中可以定义多个class
+
+    * 一个java源文件当中public的class不是必须的
+
+    * 一个class定义会生成一个xxx.class字节码文件
+
+    * 一个java源文件当中定义公开的类的话，只能有一个，并且
+    public的class名称必须和java源文件名称一致。
+
+    * 每一个class当中都可以编写main方法，都可以设定程序的入口，想执行
+    B.class中的main方法：
+        java B
+    
+    * 注意：当在命令窗口中执行java Hello，要求Hello.class中必须有主方法。
+    没有主方法会出现运行期间的错误。
+
+第二章：java语言基础
+
+1、标识符
+
+2、关键字
+
+3、字面值
+
+4、变量
+
+5、数据类型
+
+    * 基本数据类型：
+        基本数据类型包括四大类八小种：
+            第一类：整数型
+                byte（1B）,short(2B),int(4B),long(8B)
+            第二类：浮点型
+                float（4B）,double（8B）
+            第三类：布尔型
+                boolean（1B）
+            第四类：字符型
+                char（2B）
+
+    * 字符串不属于基本数据类型，属于引用数据类型
+        * 字符串使用双引号
+        * 字符使用单引号
